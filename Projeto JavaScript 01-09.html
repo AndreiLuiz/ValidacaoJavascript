@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta !name="viewport" content="width=!, initial-scale=1.0">
+    <title>Validação JavaScript</title>
+    <script>
+        function validacaoTest(){
+            var nome = document.getElementById('nome')
+            var endereco = document.getElementById('endereco')
+            var bairro = document.getElementById('bairro')
+            var cep = document.getElementById('cep')
+            var cidade = document.getElementById('cidade')
+            var estado = document.getElementById('estado')
+            var rg = document.getElementById('rg')
+            var cpf = document.getElementById('cpf')
+            var celular = document.getElementById('cel')
+            var telefone_fixo = document.getElementById('tel')
+
+                if(!nome.value){
+                    msg = "Nome está vazio"
+                    console.log(msg)
+                }else{
+                    console.log(msg)
+                    msg = ""
+                }
+
+                if(!endereco.value){
+                    msg = "Endereço está vazio"
+                    console.log(msg)
+                }else{
+                    console.log(msg)
+                    msg = ""
+                }
+
+                if(!bairro.value){
+                    msg = "Bairro está vazio"
+                    console.log(msg)
+                }
+
+                if(!cep.value){
+                    msg = "CEP está vazio"
+                    console.log(msg)
+                }
+
+                if(!cidade.value){
+                    msg = "Cidade está vazio"
+                    console.log(msg)
+                }
+
+                if(!estado.value){
+                    msg = "Estado está vazio"
+                    console.log(msg)
+                }
+
+                if(!rg.value){
+                    msg = "RG está vazio"
+                    console.log(msg)
+                }
+
+                if(!cpf.value){
+                    msg = "CPF está vazio"
+                    console.log(msg)
+                }
+
+                
+                if(cpf.value <= 11){
+                    console.log("O CPF precisa ter no minimo 11 digitos")
+                }
+
+                if(rg.value <= 7){
+                    console.log("O RG precisa ter no minimo 7 digitos")
+                }
+                
+                if(!celular.value){
+                    msg = "Celular está vazio"
+                    console.log(msg)
+                }
+                
+                if(!telefone_fixo.value){
+                    msg = "Telefone Fixo está vazio"
+                    console.log(msg)
+                }
+            }
+
+        function mascaraCEP() {
+            const cepInput = document.getElementById('cep');
+            let cep = cepInput.value;
+
+            cep = cep.replace(/\D/g, ''); 
+
+            if (cep.length > 8) {
+                cep = cep.substring(0, 8); 
+            }
+            
+            cep = cep.replace(/(\d{5})(\d{3})/, '$1-$2');
+            cepInput.value = cep;
+        }
+
+        function mascaraCPF() {
+            const cpfInput = document.getElementById('cpf');
+            let cpf = cpfInput.value;
+
+            cpf = cpf.replace(/\D/g, '');
+
+            if (cpf.length > 11) {
+                cpf = cpf.substring(0, 11);
+            }
+
+            cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+            cpfInput.value = cpf;
+        }
+
+        function mascaraRG() {
+            const rgInput = document.getElementById('rg');
+            let rg = rgInput.value;
+
+            rg = rg.replace(/\D/g, '');
+
+            if (rg.length > 9) {
+                rg = rg.substring(0, 9);
+            }
+
+            rg = rg.replace(/(\d{2})(\d{3})(\d{3})(\d{1})/, '$1.$2.$3-$4');
+            rgInput.value = rg;
+        }
+
+        function mascaraCelular() {
+            const celInput = document.getElementById('cel');
+            let cel = celInput.value;
+
+            cel = cel.replace(/\D/g, '');
+
+            if (cel.length > 11) {
+                cel = cel.substring(0, 11);
+            }
+
+            cel = cel.replace(/(\d{2})(\d{5})(\d{3})/, '($1) $2-$3');
+            celInput.value = cel;
+        }
+
+        function mascaraTelefone() {
+            const telInput = document.getElementById('tel');
+            let tel = telInput.value;
+
+            tel = tel.replace(/\D/g, '');
+
+            if (tel.length > 10) {
+                tel = tel.substring(0, 10);
+            }
+            
+            tel = tel.replace(/(\d{2})(\d{4})(\d{3})/, '($1) $2-$3');
+            telInput.value = tel;
+        }
+    </script>
+</head>
+<body>
+    <br>
+    <div class="mb-3">
+    <label for="nome" class="form-label" id="nome">Nome:</label><br>
+    <input type="text" class="form-control" id="nome" aria-describedby="emailHelp"><br><br>
+
+    <div class="mb-3">
+    <label for="endereco" class="form-label" id="endereco">Endereço:</label><br>
+    <input type="text" class="form-control" id="endereco" aria-describedby="emailHelp"><br><br>
+
+    <div class="mb-3">
+    <label for="bairro" class="form-label" id="bairro">Bairro:</label><br>
+    <input type="text" class="form-control" id="bairro" aria-describedby="emailHelp"><br><br>
+
+    CEP:<br><input type="text" placeholder="XXXXX-XXX" name="cep" id="cep" oninput="mascaraCEP()"><br><br>
+
+    <div class="mb-3">
+    <label for="cidade" class="form-label" id="cidade">Cidade:</label><br>
+    <input type="text" class="form-control" id="cidade" aria-describedby="emailHelp"><br><br>
+
+    <div class="mb-3">
+    <label for="estado" class="form-label" id="estado">Estado:</label><br>
+    <input type="text" class="form-control" id="estado" aria-describedby="emailHelp"><br><br>
+
+    RG:<br><input type="text" placeholder="XX.XXX.XXX-X" name="rg" id="rg" oninput="mascaraRG()"><br><br>
+
+    CPF:<br><input type="text" placeholder="XXX.XXX.XXX-XX" name="cpf" id="cpf" oninput="mascaraCPF()"><br><br>
+
+    Celular:<br><input type="text" placeholder="(XX) XXXXX-XXXX" name="cel" id="cel" oninput="mascaraCelular()"><br><br>
+
+    Telefone Fixo:<br><input type="text" placeholder="(XX) XXXX-XXXX" name="tel" id="tel" oninput="mascaraTelefone()"><br>
+
+    <div class="erro">
+        <p id="erro"></p>
+    </div>
+
+    <br> <button type="submit" class="btn btn-primary" onclick="validacaoTest()">Enviar</button>
+
+</form>
+</body>
+</html>
